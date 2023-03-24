@@ -23,7 +23,7 @@ function Login() {
   return (
     <>
       <Head>
-        <title>Sign In - Pocket</title>
+        <title>Sign In - AnimePlus</title>
       </Head>
       <AuthLayout
         title="Sign in to account"
@@ -85,7 +85,7 @@ function Login() {
               required
             />
           </div>
-          <Button type="submit" color="cyan" className="mt-8 w-full">
+          <Button disabled type="submit" color="cyan" className="mt-8 w-full">
             Sign in to account
           </Button>
         </form>
