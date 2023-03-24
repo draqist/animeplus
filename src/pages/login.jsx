@@ -85,7 +85,7 @@ function Login() {
               required
             />
           </div>
-          <Button disabled type="submit" color="cyan" className="mt-8 w-full">
+          <Button disabled type="submit" color="indigo" className="mt-8 bg-indigo-800 text-white w-full">
             Sign in to account
           </Button>
         </form>
