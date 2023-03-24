@@ -12,7 +12,6 @@ import { auth, provider } from "./firebase";
 // import { forgotPassword, logInType, regUser } from "./validations";
 import { forgotPassword, logInType, regUser } from "./types";
 
-
 const registerUser = async (req: regUser, width: number) => {
   const { email, password, firstName, lastName, phoneNumber, authType } = req;
 
@@ -97,12 +96,13 @@ const signInWithGoogle = async () => {
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-        console.log(user)
-        console.log(token)
+        console.log(user);
+        console.log(token);
         // IdP data available using getAdditionalUserInfo(result)
-        return { user, token }
+        return { user, token };
         // ...
-      }).catch((error) => {
+      })
+      .catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -115,5 +115,5 @@ const signInWithGoogle = async () => {
   } catch (error) {
     return error.message;
   }
-}
+};
 export { logInUser, registerUser, signInWithGoogle, forgotPassword };
