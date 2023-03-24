@@ -14,6 +14,9 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { Fragment, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "utils/firebase";
+import Page404 from "./404";
 
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
@@ -39,7 +42,12 @@ function classNames(...classes) {
 
 export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [user] = useAuthState(auth);
 
+  if (user === null) {
+    return <Page404/>;
+  }
+  else
   return (
     <div className="h-full">
       <div className="h-full">
