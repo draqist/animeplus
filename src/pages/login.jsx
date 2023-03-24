@@ -1,4 +1,4 @@
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,15 +6,21 @@ import { useRouter } from "next/router";
 import { AuthLayout } from "@/components/AuthLayout";
 import { Button } from "@/components/Button";
 import { TextField } from "@/components/Fields";
+import { signInWithGoogle } from "../../utils/auth";
+
 
 export default function Login() {
   let router = useRouter();
-  const { data: session } = useSession();
 
-  const logINUser = async () => {
-    await signIn({
-      callbackUrl: `${window.location.origin}/home`,
-    });
+  const createUser = async () => {
+    try {
+      await signInWithGoogle().then(res => {
+        console.log(res)
+        router.push("/home");
+      })
+    } catch (error) {
+      console.log(error)
+    }
   };
   return (
     <>
@@ -60,7 +66,7 @@ export default function Login() {
           </div>
           <div className="mt-6 text-center">
             <button
-              onClick={() => logINUser()}
+              onClick={() => createUser()}
               className="inline-flex w-full justify-center rounded-md bg-white py-2 px-4 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0"
             >
               <span className="pr-4">Sign in with Google</span>
