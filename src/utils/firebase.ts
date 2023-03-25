@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA4-ZVYuiu4oCgefBqp67KhHu-klOicf8s",
-  authDomain: "chatanime-b26c6.firebaseapp.com",
-  projectId: "chatanime-b26c6",
-  storageBucket: "chatanime-b26c6.appspot.com",
-  messagingSenderId: "717296318166",
-  appId: "1:717296318166:web:3b3b74724e8bbe4a81bb77",
-  measurementId: "G-S119G23EZ7",
+  apiKey: "AIzaSyCZTmnPD4y5aKN3nfzgDRVNYFSbbnlFiJw",
+  authDomain: "chatfic-a0dd0.firebaseapp.com",
+  projectId: "chatfic-a0dd0",
+  storageBucket: "chatfic-a0dd0.appspot.com",
+  messagingSenderId: "436702448139",
+  appId: "1:436702448139:web:05d2df10761abe72fd150e",
+  measurementId: "G-KE8RQV2757",
 };
 const app = initializeApp(firebaseConfig);
 //  Providers for social login

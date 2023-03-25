@@ -16,11 +16,11 @@
     "@tailwindcss/forms": "^0.5.3",
     "autoprefixer": "^10.4.12",
     "clsx": "^1.2.1",
+    "date-fns": "^2.29.3",
     "firebase": "^9.18.0",
     "focus-visible": "^5.2.0",
     "framer-motion": "^6.5.1",
     "next": "13.0.2",
-    "next-auth": "^4.20.1",
     "postcss-focus-visible": "^6.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -30,12 +30,15 @@
     "yup": "^1.0.2"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@types/faker": "^6.6.9",
     "@types/node": "18.15.5",
     "@types/react": "18.0.28",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "typescript": "5.0.2"
   }
 }

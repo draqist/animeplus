@@ -19,7 +19,7 @@ export default function Example() {
     <div className="bg-gray-900">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-          <div className="flex text-center items-center lg:flex-1">
+          <div className="flex items-center text-center lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               {/* <span className="sr-only">Your Company</span> */}
               {/* <img
@@ -27,9 +27,9 @@ export default function Example() {
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                 alt=""
               /> */}
-              <Logomark width="28" height="28" className="fill-indigo-500"/>
+              <Logomark width="28" height="28" className="fill-indigo-500" />
             </a>
-            <span className="ml-3 text-white font-bold text-lg uppercase"> Animeplus</span>
+            <span className="ml-3 text-lg font-bold uppercase text-white"> Animeplus</span>
           </div>
           <div className="flex lg:hidden">
             <button
@@ -138,14 +138,16 @@ export default function Example() {
               {/* A better way to ship your projects */}
               Chat with your favorite anime characters like never before
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 hover:text-gray-400 transition all ease-in-out">
-              Welcome to Anime Chat, the ultimate destination for anime fans! Our app allows you to interact with your favorite anime characters like never before, thanks to the powerful capabilities of ChatGPT. Whether you want to chat with Naruto about his latest mission, ask Sailor Moon for advice on defeating the Dark Kingdom, or just hang out with Pikachu and talk about your day, Anime Chat has got you covered. With a vast selection of characters to choose from and endless conversation possibilities, the fun never stops. Download Anime Chat now and enter a world of anime adventures!
+            <p className="all mt-6 text-lg leading-8 text-gray-600 transition ease-in-out hover:text-gray-400">
+              Welcome to Anime Chat, the ultimate destination for anime fans! Our app allows you to interact with your
+              favorite anime characters like never before, thanks to the powerful capabilities of ChatGPT. Whether you
+              want to chat with Naruto about his latest mission, ask Sailor Moon for advice on defeating the Dark
+              Kingdom, or just hang out with Pikachu and talk about your day, Anime Chat has got you covered. With a
+              vast selection of characters to choose from and endless conversation possibilities, the fun never stops.
+              Download Anime Chat now and enter a world of anime adventures!
             </p>
             <div className="mt-10 flex items-center gap-x-6">
-              <Link
-                href="/login"
-                legacyBehavior
-              >
+              <Link href="/login" legacyBehavior>
                 <a className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                   Get started
                 </a>
