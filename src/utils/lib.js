@@ -4,10 +4,11 @@ const waitlistAPI = axios.create({
   baseURL: "http://chatfic-lb-1532766351.eu-west-1.elb.amazonaws.com",
 });
 
-export const signInUser = async (token, name) => {
+export const signInOrCreateUser = async (token) => {
   const response = await waitlistAPI.post("/account", {
     token,
   });
+  console.log(response);
   return response;
 };
 
