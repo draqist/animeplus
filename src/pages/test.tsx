@@ -1,7 +1,5 @@
 import Layout from "@/components/Layout";
-import {
-  Box
-} from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 const Test = () => {
   return (

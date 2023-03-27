@@ -21,15 +21,13 @@ const config = {
   useSystemColorMode: false,
 };
 
-
 const theme = extendTheme({ colors, config });
 export default function App({ Component, pageProps }) {
-  const getLayout = Component.getLayout || ((page) => page)
+  const getLayout = Component.getLayout || ((page) => page);
 
   return getLayout(
     <ChakraProvider theme={theme}>
       <Component {...pageProps} />
-    </ChakraProvider>
-  )
-  ;
+    </ChakraProvider>,
+  );
 }

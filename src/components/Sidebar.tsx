@@ -1,16 +1,8 @@
-import {
-  Box,
-  Drawer,
-  DrawerContent,
-  DrawerOverlay,
-  Flex,
-  Icon,
-  useDisclosure
-} from "@chakra-ui/react";
+import { Box, Drawer, DrawerContent, DrawerOverlay, Flex, Icon, useDisclosure } from "@chakra-ui/react";
 import { Logo } from "@choc-ui/logo";
 import { MdHome } from "react-icons/md";
 
-export default function Sidebar({children}) {
+export default function Sidebar({ children }) {
   const sidebar = useDisclosure();
 
   const NavItem = (props) => {
@@ -60,7 +52,7 @@ export default function Sidebar({children}) {
       overflowX="hidden"
       overflowY="auto"
       bg="#E3E5E8"
-      _dark={{bg: "brand.500"}}
+      _dark={{ bg: "brand.500" }}
       w="60"
       {...props}
     >

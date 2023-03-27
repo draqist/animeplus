@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  Button,
   Drawer,
   DrawerContent,
   DrawerOverlay,
@@ -10,16 +11,25 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  useDisclosure
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { Logo } from "@choc-ui/logo";
-import { AiOutlinePlus } from "react-icons/ai";
+import { useState } from "react";
 import { FaBell } from "react-icons/fa";
 import { FiMenu, FiSearch } from "react-icons/fi";
 import { MdHome } from "react-icons/md";
 
-export default function Layout({children}) {
+export default function Layout({ children }) {
   const sidebar = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [text, setText] = useState("")
 
   const NavItem = (props) => {
     const { icon, children, ...rest } = props;
@@ -68,7 +78,7 @@ export default function Layout({children}) {
       overflowX="hidden"
       overflowY="auto"
       bg="#E3E5E8"
-      _dark={{bg: "brand.500"}}
+      _dark={{ bg: "brand.500" }}
       w="60"
       {...props}
     >
@@ -80,12 +90,6 @@ export default function Layout({children}) {
       </Flex>
       <Flex direction="column" as="nav" fontSize="sm" color="white" aria-label="Main Navigation">
         <NavItem icon={MdHome}>Home</NavItem>
-        {/* <NavItem icon={FaRss}>Articles</NavItem>
-        <NavItem icon={HiCollection}>Collections</NavItem>
-        <NavItem icon={FaClipboardCheck}>Checklists</NavItem>
-        <NavItem icon={HiCode}>Integrations</NavItem>
-        <NavItem icon={AiFillGift}>Changelog</NavItem>
-        <NavItem icon={BsGearFill}>Settings</NavItem> */}
       </Flex>
     </Box>
   );
@@ -118,7 +122,7 @@ export default function Layout({children}) {
             icon={<FiMenu />}
             size="sm"
           />
-          <InputGroup  w="96" display={{ base: "none", md: "flex" }}>
+          <InputGroup w="96" display={{ base: "none", md: "flex" }}>
             <InputLeftElement color="gray.500">
               <FiSearch />
             </InputLeftElement>
@@ -140,9 +144,59 @@ export default function Layout({children}) {
         <Box as="main" px="16px" py="12" bg="#313338" overflow={"scroll"}>
           {/* Add content here, remove div below  */}
           {children}
-          <Flex as="button" w="60px" h="60px" borderRadius="50%" bgColor="white" color="black" pos="absolute" bottom="40" right="40px" justifyContent="center" alignItems={"center"}>
-            <AiOutlinePlus fontSize={"24px"}/>
-          </Flex>
+          <Modal onClose={onClose} size={"xl"} isOpen={isOpen}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Ask me anything</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                {/* <Lorem count={2} /> */}
+                Nostrud laboris laboris consequat minim exercitation dolore nisi. Anim mollit commodo fugiat laboris
+                tempor id sit quis labore ipsum mollit esse deserunt. Do commodo elit eiusmod nostrud amet incididunt
+                laborum ad ex consequat. Non nostrud sit consequat sit minim laborum id ad consequat amet.
+              </ModalBody>
+              <ModalFooter>
+                <Button onClick={onClose}>Close</Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+          <Box w="100%" pos="relative" bottom="0px">
+            {/* <Chats/> */}
+            <div className="flex justify-between gap-y-4 gap-x-8 bg-inherit p-6 text-white md:flex-row  md:items-center lg:flex-col lg:px-8">
+              <textarea
+                rows={4}
+                name="comment"
+                id="comment"
+                className="block w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"
+                defaultValue={text}
+                onChange={(e) => setText(e.target.value)}
+              />
+              <div className="flex flex-none items-center gap-x-5">
+                <button
+                  type="button"
+                  className="rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
+                >
+                  Send
+                </button>
+              </div>
+            </div>
+          </Box>
+          {/* <Flex
+            as="button"
+            w="60px"
+            h="60px"
+            borderRadius="50%"
+            bgColor="white"
+            color="black"
+            pos="absolute"
+            bottom="40"
+            right="40px"
+            justifyContent="center"
+            alignItems={"center"}
+            onClick={onOpen}
+          >
+            <AiOutlinePlus fontSize={"24px"} />
+          </Flex> */}
         </Box>
       </Box>
     </Box>

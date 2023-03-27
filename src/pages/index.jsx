@@ -7,7 +7,6 @@ import { Logomark } from "@/components/Logo";
 import Features from "../components/Feature";
 import Pricing from "../components/Pricing";
 import { signInWithGoogle } from "../utils/auth.ts";
-import { signInOrCreateUser } from "../utils/lib";
 
 const navigation = [
   { name: "Features", href: "#features" },
@@ -24,14 +23,7 @@ export default function Example() {
       let idtoken = await res.user.getIdToken();
       console.log(idtoken);
       // send to backend to create user if they don't exist
-      let resp = await signInOrCreateUser(idtoken);
-      if (resp.error) {
-        console.log(resp.status);
-        alert("error");
-        return;
-      }
-      idtoken = await res.user.getIdToken(true);
-      localStorage.setItem("token", idtoken);
+      localStorage.setItem("idtoken", idtoken);
     } catch (error) {
       console.log(error);
       if (error.code == "auth/email-already-in-use") {
