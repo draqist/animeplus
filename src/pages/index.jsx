@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Logomark } from "@/components/Logo";
 import Features from "../components/Feature";
 import Pricing from "../components/Pricing";
+import { signInWithGoogle } from "../utils/auth.ts";
 
 const navigation = [
   { name: "Features", href: "#features" },
@@ -14,6 +15,32 @@ const navigation = [
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const signInWithGoogleHandler = async (e) => {
+    e.preventDefault();
+    try {
+      let res = await signInWithGoogle();
+      let idtoken = await res.user.getIdToken();
+      console.log(idtoken);
+      // send to backend to create user if they don't exist
+      localStorage.setItem("idtoken", idtoken);
+    } catch (error) {
+      console.log(error);
+      if (error.code == "auth/email-already-in-use") {
+        alert("Email already in use. Please login.");
+      } else if (error.code == "auth/invalid-email") {
+        alert("Invalid email address.");
+      } else if (error.code == "auth/weak-password") {
+        alert("Password is too weak.");
+      } else if (error.code == "auth/operation-not-allowed") {
+        alert("Email sign-in is disabled.");
+      } else if (error.code == "auth/invalid-credential") {
+        alert("Invalid credential.");
+      } else {
+        alert("Error");
+      }
+    }
+  };
 
   return (
     <div className="relative overflow-hidden bg-gray-900">
@@ -50,7 +77,7 @@ export default function Example() {
               ))}
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <Link href="/login" passHref legacyBehavior>
+              <Link href="#signInWithGoogle" passHref legacyBehavior>
                 <a href="" className="text-sm font-semibold leading-6 text-white">
                   Log in <span aria-hidden="true">&rarr;</span>
                 </a>
@@ -93,9 +120,9 @@ export default function Example() {
                     ))}
                   </div>
                   <div className="py-6">
-                    <Link href="/login" passHref legacyBehavior>
+                    <Link href="#signInWithGoogle" passHref legacyBehavior>
                       <a
-                        href="#"
+                        href=""
                         className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-white hover:bg-gray-800"
                       >
                         Log in
@@ -142,12 +169,31 @@ export default function Example() {
                 Escape into a world of pure imagination with ChatFic. Talk to your favorite fictional characters,
                 explore their worlds, and experience stories like never before.
               </p>
-              <div className="mt-10 flex items-center gap-x-6">
-                <Link href="/login" legacyBehavior>
-                  <a className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                    Get started
-                  </a>
-                </Link>
+              <div className="mt-10 flex items-center gap-x-6" id="signInWithGoogle">
+                <div className="inline-flex w-full justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+                  <button
+                    type="button"
+                    className="dark:focus:ring-[#4285F4]/55 mr-2 mb-2 inline-flex w-full items-center justify-center rounded-lg bg-[#4285F4] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#4285F4]/90 focus:outline-none focus:ring-4 focus:ring-[#000202]/50"
+                    onClick={signInWithGoogleHandler}
+                  >
+                    <svg
+                      className="mr-2 -ml-1 h-4 w-4"
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fab"
+                      data-icon="google"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 488 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
+                      ></path>
+                    </svg>
+                    Sign in with Google
+                  </button>
+                </div>
                 <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                   Learn more <span aria-hidden="true">→</span>
                 </a>

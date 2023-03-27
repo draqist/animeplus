@@ -5,35 +5,35 @@ import { regUser } from "./types";
 const registerUser = async (req: regUser, width: number) => {
   const { authType } = req;
 
-  if (width >= 413 && authType === "google") {
-    try {
-      await signInWithPopup(auth, provider).then((sessionResult) => {
-        const credential = GoogleAuthProvider.credentialFromResult(sessionResult);
-        const user = sessionResult.user;
-        const { displayName } = user;
-        // @ts-ignore
-        const [firstName, lastName] = displayName?.split(" ");
-        return { user, credential };
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  } else if (width < 413 && authType === "google") {
-    try {
-      await signInWithRedirect(auth, provider).then(() => {
-        getRedirectResult(auth).then((response) => {
-          const user = response?.user;
-          console.log(user);
-          return user;
-        });
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  // if (width >= 413 && authType === "google") {
+  try {
+    await signInWithPopup(auth, provider).then((sessionResult) => {
+      const credential = GoogleAuthProvider.credentialFromResult(sessionResult);
+      const user = sessionResult.user;
+      const { displayName } = user;
+      // @ts-ignore
+      const [firstName, lastName] = displayName?.split(" ");
+      return { user, credential };
+    });
+  } catch (error) {
+    console.log(error);
   }
+  // } else if (width < 413 && authType === "google") {
+  //   try {
+  //     await signInWithRedirect(auth, provider).then(() => {
+  //       getRedirectResult(auth).then((response) => {
+  //         const user = response?.user;
+  //         console.log(user);
+  //         return user;
+  //       });
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 };
 
-const signInWithGoogle = async () => {
+const signInWithGoogleTs = async () => {
   await signInWithPopup(auth, provider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -57,5 +57,10 @@ const signInWithGoogle = async () => {
       const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
     });
+};
+
+const signInWithGoogle = async () => {
+  const provider = new GoogleAuthProvider();
+  return await signInWithPopup(auth, provider);
 };
 export { registerUser, signInWithGoogle };
