@@ -1,3 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
+import { Logo } from "@/components/Logo";
+import { auth } from "@/utils/firebase";
+import { createChat, getChats } from "@/utils/lib";
 import {
   Avatar,
   Box,
@@ -6,6 +10,9 @@ import {
   DrawerContent,
   DrawerOverlay,
   Flex,
+  FormControl,
+  FormHelperText,
+  FormLabel,
   Icon,
   IconButton,
   Input,
@@ -18,18 +25,25 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Textarea,
   useDisclosure,
 } from "@chakra-ui/react";
-import { Logo } from "@choc-ui/logo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { AiOutlinePlus } from "react-icons/ai";
 import { FaBell } from "react-icons/fa";
 import { FiMenu, FiSearch } from "react-icons/fi";
 import { MdHome } from "react-icons/md";
 
-export default function Layout({ children }) {
+
+export default function Layout( ) {
   const sidebar = useDisclosure();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [text, setText] = useState("")
+  const [user, loading, error] = useAuthState(auth)
+  useEffect(() => {
+    const user = getChats()
+  }, [])
 
   const NavItem = (props) => {
     const { icon, children, ...rest } = props;
@@ -83,16 +97,18 @@ export default function Layout({ children }) {
       {...props}
     >
       <Flex px="4" py="5" align="center">
-        <Logo />
-        {/* <Text fontSize="2xl" ml="2" color="white" fontWeight="semibold">
-          Choc UI
-        </Text> */}
+        <Box w="24px" >
+          <Logo />
+        </Box>
       </Flex>
       <Flex direction="column" as="nav" fontSize="sm" color="white" aria-label="Main Navigation">
-        <NavItem icon={MdHome}>Home</NavItem>
+        <NavItem icon={MdHome}>CHAT 1</NavItem>
+        <NavItem icon={MdHome}>CHAT 2</NavItem>
+        <NavItem icon={MdHome}>CHAT 3</NavItem>
       </Flex>
     </Box>
   );
+  console.log(user)
   return (
     <Box as="section" bg="white" _dark={{ bg: "#313338" }} minH="100vh">
       <SidebarContent display={{ base: "none", md: "unset" }} />
@@ -143,34 +159,28 @@ export default function Layout({ children }) {
 
         <Box as="main" px="16px" py="12" bg="#313338" overflow={"scroll"}>
           {/* Add content here, remove div below  */}
-          {children}
           <Modal onClose={onClose} size={"xl"} isOpen={isOpen}>
             <ModalOverlay />
             <ModalContent>
-              <ModalHeader>Ask me anything</ModalHeader>
+              <ModalHeader>Create your fiction character</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                {/* <Lorem count={2} /> */}
-                Nostrud laboris laboris consequat minim exercitation dolore nisi. Anim mollit commodo fugiat laboris
-                tempor id sit quis labore ipsum mollit esse deserunt. Do commodo elit eiusmod nostrud amet incididunt
-                laborum ad ex consequat. Non nostrud sit consequat sit minim laborum id ad consequat amet.
+                <FormControl>
+                  <FormLabel>Email address</FormLabel>
+                  <Input type='email' />
+                  <FormHelperText>We'll never share your email.</FormHelperText>
+                </FormControl>
               </ModalBody>
               <ModalFooter>
                 <Button onClick={onClose}>Close</Button>
               </ModalFooter>
             </ModalContent>
           </Modal>
-          <Box w="100%" pos="relative" bottom="0px">
+          <Box w="100%" pos="relative" top="0px">
             {/* <Chats/> */}
-            <div className="flex justify-between gap-y-4 gap-x-8 bg-inherit p-6 text-white md:flex-row  md:items-center lg:flex-col lg:px-8">
-              <textarea
-                rows={4}
-                name="comment"
-                id="comment"
-                className="block w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"
-                defaultValue={text}
-                onChange={(e) => setText(e.target.value)}
-              />
+            <div className="flex justify-between gap-y-4 gap-x-4 bg-transparent p-1 text-white md:flex-row  md:items-center lg:flex-col lg:px-8">
+              <Textarea placeholder='Type something' onChange={(e) => setText(e.target.value)} />
+              
               <div className="flex flex-none items-center gap-x-5">
                 <button
                   type="button"
@@ -181,7 +191,7 @@ export default function Layout({ children }) {
               </div>
             </div>
           </Box>
-          {/* <Flex
+          <Flex
             as="button"
             w="60px"
             h="60px"
@@ -193,10 +203,12 @@ export default function Layout({ children }) {
             right="40px"
             justifyContent="center"
             alignItems={"center"}
-            onClick={onOpen}
+            onClick={() => {
+              createChat()
+            }}
           >
             <AiOutlinePlus fontSize={"24px"} />
-          </Flex> */}
+          </Flex>
         </Box>
       </Box>
     </Box>
