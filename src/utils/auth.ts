@@ -1,19 +1,9 @@
-import {
-  createUserWithEmailAndPassword,
-  getRedirectResult,
-  GoogleAuthProvider,
-  sendEmailVerification,
-  sendPasswordResetEmail,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signInWithRedirect,
-} from "firebase/auth";
+import { getRedirectResult, GoogleAuthProvider, signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { auth, provider } from "./firebase";
-// import { forgotPassword, logInType, regUser } from "./validations";
-import { forgotPassword, logInType, regUser } from "./types";
+import { regUser } from "./types";
 
 const registerUser = async (req: regUser, width: number) => {
-  const { email, password, firstName, lastName, phoneNumber, authType } = req;
+  const { authType } = req;
 
   if (width >= 413 && authType === "google") {
     try {
@@ -40,50 +30,6 @@ const registerUser = async (req: regUser, width: number) => {
     } catch (error) {
       console.log(error);
     }
-  } else {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        return user;
-      });
-    } catch (error) {
-      console.log(error);
-      return;
-    }
-  }
-};
-
-const logInUser = async (req: logInType) => {
-  const { email, password } = req;
-  try {
-    await signInWithEmailAndPassword(auth, email, password).then((loggedResponse) => {
-      const user = loggedResponse.user;
-      if (!user.emailVerified) {
-        sendEmailVerification(user).then((response) => {
-          console.log(response);
-        });
-      }
-      return user;
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const forgotPassword = async (req: forgotPassword) => {
-  const { email } = req;
-  try {
-    await sendPasswordResetEmail(auth, email).then(() => {
-      // Password reset email sent!
-      console.log("Password reset");
-    });
-  } catch (error) {
-    // @ts-ignore
-    const errorCode = error?.code;
-    // @ts-ignore
-    const errorMessage = error?.message;
-    return errorMessage;
   }
 };
 
@@ -112,4 +58,4 @@ const signInWithGoogle = async () => {
       // ...
     });
 };
-export { logInUser, registerUser, signInWithGoogle, forgotPassword };
+export { registerUser, signInWithGoogle };
