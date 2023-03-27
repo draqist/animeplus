@@ -62,7 +62,7 @@
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.17.9.tgz"
   integrity sha512-lSiBBvodq29uShpWGNbgFdKYNiFDo5/HIYsaCEY9ff4sb10x9jizo2+pRrSyF4jKZCXqgzuqBOQKbUm90gQwJg==
   dependencies:
-    regenerator-runtime "^0.13.11"
+    regenerator-runtime "^0.13.4"
 
 "@babel/types@^7.18.6":
   version "7.21.3"
@@ -454,7 +454,7 @@
     "@chakra-ui/css-reset" "2.1.0"
     "@chakra-ui/portal" "2.0.16"
     "@chakra-ui/react-env" "3.0.0"
-    "@chakra-ui/system" "2.5.4"
+    "@chakra-ui/system" "2.5.3"
     "@chakra-ui/utils" "2.0.15"
 
 "@chakra-ui/radio@2.0.21":
@@ -622,7 +622,7 @@
     "@chakra-ui/breadcrumb" "2.1.5"
     "@chakra-ui/button" "2.0.17"
     "@chakra-ui/card" "2.1.6"
-    "@chakra-ui/checkbox" "2.2.13"
+    "@chakra-ui/checkbox" "2.2.12"
     "@chakra-ui/close-button" "2.0.17"
     "@chakra-ui/control-box" "2.0.13"
     "@chakra-ui/counter" "2.0.14"
@@ -645,24 +645,24 @@
     "@chakra-ui/popper" "3.0.13"
     "@chakra-ui/portal" "2.0.16"
     "@chakra-ui/progress" "2.1.6"
-    "@chakra-ui/provider" "2.2.1"
-    "@chakra-ui/radio" "2.0.22"
+    "@chakra-ui/provider" "2.2.0"
+    "@chakra-ui/radio" "2.0.21"
     "@chakra-ui/react-env" "3.0.0"
     "@chakra-ui/select" "2.0.19"
     "@chakra-ui/skeleton" "2.0.24"
     "@chakra-ui/slider" "2.0.23"
     "@chakra-ui/spinner" "2.0.13"
     "@chakra-ui/stat" "2.0.18"
-    "@chakra-ui/styled-system" "2.7.0"
-    "@chakra-ui/switch" "2.0.25"
-    "@chakra-ui/system" "2.5.4"
+    "@chakra-ui/styled-system" "2.6.2"
+    "@chakra-ui/switch" "2.0.24"
+    "@chakra-ui/system" "2.5.3"
     "@chakra-ui/table" "2.0.17"
     "@chakra-ui/tabs" "2.1.9"
-    "@chakra-ui/tag" "3.0.0"
+    "@chakra-ui/tag" "2.0.18"
     "@chakra-ui/textarea" "2.0.19"
-    "@chakra-ui/theme" "3.0.0"
-    "@chakra-ui/theme-utils" "2.0.14"
-    "@chakra-ui/toast" "6.1.0"
+    "@chakra-ui/theme" "2.3.0"
+    "@chakra-ui/theme-utils" "2.0.13"
+    "@chakra-ui/toast" "6.0.3"
     "@chakra-ui/tooltip" "2.2.7"
     "@chakra-ui/transition" "2.0.15"
     "@chakra-ui/utils" "2.0.15"
@@ -736,7 +736,7 @@
   resolved "https://registry.npmjs.org/@chakra-ui/switch/-/switch-2.0.24.tgz"
   integrity sha512-ZIinfTcGFZgWnpWwJNdOwtLTrOj8i9O/BIw+431wNSm2hV1c1Cx7vFQjWaWQIEINaX32IdE/0Jod/1CrRR513g==
   dependencies:
-    "@chakra-ui/checkbox" "2.2.13"
+    "@chakra-ui/checkbox" "2.2.12"
     "@chakra-ui/shared-utils" "2.0.5"
 
 "@chakra-ui/system@>=2.0.0", "@chakra-ui/system@2.5.3":
@@ -747,8 +747,8 @@
     "@chakra-ui/color-mode" "2.1.12"
     "@chakra-ui/object-utils" "2.0.8"
     "@chakra-ui/react-utils" "2.0.12"
-    "@chakra-ui/styled-system" "2.7.0"
-    "@chakra-ui/theme-utils" "2.0.14"
+    "@chakra-ui/styled-system" "2.6.2"
+    "@chakra-ui/theme-utils" "2.0.13"
     "@chakra-ui/utils" "2.0.15"
     react-fast-compare "3.2.0"
 
@@ -806,8 +806,8 @@
   integrity sha512-4OTsyJn3nSLH2EQ0Rsrge57IC3Yo9u5PmY2ikUuTlpmIkj2OkT0ONt89N0zsDutTnqoOYjiZZEAheSZwxADPGw==
   dependencies:
     "@chakra-ui/shared-utils" "2.0.5"
-    "@chakra-ui/styled-system" "2.7.0"
-    "@chakra-ui/theme" "3.0.0"
+    "@chakra-ui/styled-system" "2.6.2"
+    "@chakra-ui/theme" "2.3.0"
     lodash.mergewith "4.6.2"
 
 "@chakra-ui/theme@2.3.0":
@@ -831,8 +831,8 @@
     "@chakra-ui/react-use-timeout" "2.0.5"
     "@chakra-ui/react-use-update-effect" "2.0.7"
     "@chakra-ui/shared-utils" "2.0.5"
-    "@chakra-ui/styled-system" "2.7.0"
-    "@chakra-ui/theme" "3.0.0"
+    "@chakra-ui/styled-system" "2.6.2"
+    "@chakra-ui/theme" "2.3.0"
 
 "@chakra-ui/tooltip@2.2.7":
   version "2.2.7"
@@ -1457,16 +1457,6 @@
   integrity sha512-W+fIIIaFU7Kct7Okx91C7XDRGolv/w2RUenX2yZFeeNVcuVzDIKUcNmckrYbYcwrNQUSXmtwrs3g8xwast0YtA==
   dependencies:
     glob "7.1.7"
-
-"@next/swc-linux-x64-gnu@13.0.2":
-  version "13.0.2"
-  resolved "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-13.0.2.tgz"
-  integrity sha512-pi63RoxvG4ES1KS06Zpm0MATVIXTs/TIbLbdckeLoM40u1d3mQl/+hSSrLRSxzc2OtyL8fh92sM4gkJrQXAMAw==
-
-"@next/swc-linux-x64-musl@13.0.2":
-  version "13.0.2"
-  resolved "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-13.0.2.tgz"
-  integrity sha512-9Pv91gfYnDONgjtRm78n64b/c54+azeHtlnqBLTnIFWSMBDRl1/WDkhKWIj3fBGPLimtK7Tko3ULR3og9RRUPw==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -4123,7 +4113,12 @@ tslib@^1.8.1:
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0:
+tslib@^2.0.0, tslib@^2.1.0:
+  version "2.5.0"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.5.0.tgz"
+  integrity sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==
+
+tslib@^2.0.3:
   version "2.5.0"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.5.0.tgz"
   integrity sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==
