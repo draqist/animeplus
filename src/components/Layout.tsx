@@ -13,11 +13,9 @@ import {
   useDisclosure
 } from "@chakra-ui/react";
 import { Logo } from "@choc-ui/logo";
-import { AiFillGift } from "react-icons/ai";
-import { BsGearFill } from "react-icons/bs";
-import { FaBell, FaClipboardCheck, FaRss } from "react-icons/fa";
+import { AiOutlinePlus } from "react-icons/ai";
+import { FaBell } from "react-icons/fa";
 import { FiMenu, FiSearch } from "react-icons/fi";
-import { HiCode, HiCollection } from "react-icons/hi";
 import { MdHome } from "react-icons/md";
 
 export default function Layout({children}) {
@@ -82,12 +80,12 @@ export default function Layout({children}) {
       </Flex>
       <Flex direction="column" as="nav" fontSize="sm" color="white" aria-label="Main Navigation">
         <NavItem icon={MdHome}>Home</NavItem>
-        <NavItem icon={FaRss}>Articles</NavItem>
+        {/* <NavItem icon={FaRss}>Articles</NavItem>
         <NavItem icon={HiCollection}>Collections</NavItem>
         <NavItem icon={FaClipboardCheck}>Checklists</NavItem>
         <NavItem icon={HiCode}>Integrations</NavItem>
         <NavItem icon={AiFillGift}>Changelog</NavItem>
-        <NavItem icon={BsGearFill}>Settings</NavItem>
+        <NavItem icon={BsGearFill}>Settings</NavItem> */}
       </Flex>
     </Box>
   );
@@ -142,6 +140,9 @@ export default function Layout({children}) {
         <Box as="main" px="16px" py="12" bg="#313338" overflow={"scroll"}>
           {/* Add content here, remove div below  */}
           {children}
+          <Flex as="button" w="60px" h="60px" borderRadius="50%" bgColor="white" color="black" pos="absolute" bottom="40" right="40px" justifyContent="center" alignItems={"center"}>
+            <AiOutlinePlus fontSize={"24px"}/>
+          </Flex>
         </Box>
       </Box>
     </Box>

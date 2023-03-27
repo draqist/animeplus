@@ -1,14 +1,12 @@
-import Sidebar from "@/components/Sidebar";
+import Layout from "@/components/Layout";
 import {
-  Box,
-  Heading
+  Box
 } from "@chakra-ui/react";
-import { ReactElement } from "react";
 
 const Test = () => {
   return (
     <Box>
-      <Sidebar />
+      <Layout />
     </Box>
   );
 };
