@@ -64,9 +64,9 @@ const Chat = () => {
     },
   ];
   let message = {
-    text: "So I am sure this is supper out of support. But I started using the Spotlight template for my personal page. I converted it to TypeScript (mostly) and it runs great locally npm run dev I can access my articles via slug and they show up on the home page and articles/blog page."
-  }
-  
+    text: "So I am sure this is supper out of support. But I started using the Spotlight template for my personal page. I converted it to TypeScript (mostly) and it runs great locally npm run dev I can access my articles via slug and they show up on the home page and articles/blog page.",
+  };
+
   return (
     <>
       <div className="hidden w-60 flex-col bg-gray-800 md:flex">

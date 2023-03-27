@@ -19,7 +19,7 @@ function ChannelList({ server }: ChannelListProps) {
   }
 
   return (
-    <div className="scrollbar-hide flex-1 space-y-[21px] overflow-y-scroll pt-3 font-medium text-gray-300">
+    <div className="flex-1 space-y-[21px] overflow-y-scroll pt-3 font-medium text-gray-300 scrollbar-hide">
       {server.categories.map((category) => (
         <div key={category.id}>
           {category.label && (
