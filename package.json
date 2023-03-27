@@ -25,6 +25,7 @@
     "date-fns": "^2.29.3",
     "firebase": "^9.18.0",
     "focus-visible": "^5.2.0",
+    "formik": "^2.2.9",
     "framer-motion": "^10.9.1",
     "next": "13.0.2",
     "postcss-focus-visible": "^6.0.4",

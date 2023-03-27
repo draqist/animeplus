@@ -25,15 +25,8 @@ const logInValidation = Yup.object().shape({
   email: Yup.string().required("Kindly enter an email address to login").email("Email must be valid"),
   password: Yup.string().required("Kindly enter your password"),
 });
-const registerValidation = Yup.object().shape({
-  firstName: Yup.string().required("Kindly enter your first name").min(4, "Must be at least 4 characters"),
-  lastName: Yup.string().required("Kindly enter your last name").min(4, "Must be at least 4 characters"),
-  email: Yup.string().required("Kindly enter an email address").email("Email must be valid"),
-  password: Yup.string().required("Kindly enter a password").min(6, "Must be at least 6 characters"),
-  phoneNumber: Yup.string()
-    .required("Kindly enter your phone number")
-    .matches(phoneRegExp, "Phone number is not valid")
-    .min(11, "too short")
-    .max(11, "too long"),
+const chatValidation = Yup.object().shape({
+  universe: Yup.string().required("Universe must have a name").min(4, "Must be at least 4 characters"),
+  character: Yup.string().required("Character must have a name").min(4, "Must be at least 4 characters"),
 });
-export { initialValues, registerValidation, forgotValues, logInValidation, logInValues, forgotValidation };
+export { initialValues, chatValidation, forgotValues, logInValidation, logInValues, forgotValidation };

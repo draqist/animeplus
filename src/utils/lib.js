@@ -30,7 +30,7 @@ export const getChats = async () => {
   return response;
 };
 
-export const createChat = async () => {
+export const createChat = async (chatData) => {
   let payload = {
     token,
   };
@@ -38,6 +38,7 @@ export const createChat = async () => {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("idtoken")}`,
     },
+    body: JSON.stringify(chatData),
   });
   return response;
 };

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Logo } from "@/components/Logo";
 import { auth } from "@/utils/firebase";
-import { createChat, getChats } from "@/utils/lib";
+import { chatValidation } from "@/utils/validations";
 import {
   Avatar,
   Box,
@@ -11,7 +11,7 @@ import {
   DrawerOverlay,
   Flex,
   FormControl,
-  FormHelperText,
+  FormErrorMessage,
   FormLabel,
   Icon,
   IconButton,
@@ -22,12 +22,12 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   Textarea,
-  useDisclosure,
+  useDisclosure
 } from "@chakra-ui/react";
+import { Formik } from "formik";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -35,15 +35,15 @@ import { FaBell } from "react-icons/fa";
 import { FiMenu, FiSearch } from "react-icons/fi";
 import { MdHome } from "react-icons/md";
 
-
-export default function Layout( ) {
+export default function Layout() {
   const sidebar = useDisclosure();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [text, setText] = useState("")
-  const [user, loading, error] = useAuthState(auth)
+  const [text, setText] = useState("");
+  const [user, loading, error] = useAuthState(auth);
   useEffect(() => {
-    const user = getChats()
-  }, [])
+    // const user = getChats();
+    console.log(user);
+  }, []);
 
   const NavItem = (props) => {
     const { icon, children, ...rest } = props;
@@ -97,7 +97,7 @@ export default function Layout( ) {
       {...props}
     >
       <Flex px="4" py="5" align="center">
-        <Box w="24px" >
+        <Box w="24px">
           <Logo />
         </Box>
       </Flex>
@@ -108,7 +108,7 @@ export default function Layout( ) {
       </Flex>
     </Box>
   );
-  console.log(user)
+  console.log(user);
   return (
     <Box as="section" bg="white" _dark={{ bg: "#313338" }} minH="100vh">
       <SidebarContent display={{ base: "none", md: "unset" }} />
@@ -165,22 +165,55 @@ export default function Layout( ) {
               <ModalHeader>Create your fiction character</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                <FormControl>
-                  <FormLabel>Email address</FormLabel>
-                  <Input type='email' />
-                  <FormHelperText>We'll never share your email.</FormHelperText>
-                </FormControl>
+                <Formik
+                  initialValues={{ character: "", universe: "" }}
+                  onSubmit={(values, { setSubmitting }) => {}}
+                  validationSchema={chatValidation}
+                >
+                  {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+                    <form onSubmit={handleSubmit}>
+                      <FormControl marginY="10px">
+                        <FormLabel>Name your universe </FormLabel>
+                        <Input
+                          type="text"
+                          placeholder="Enter your universe name"
+                          value={values.universe}
+                          onChange={handleChange}
+                          name="universe"
+                        />
+                        {errors.universe ? (
+                          <FormErrorMessage fontSize={"11px"}> {errors.universe} </FormErrorMessage>
+                        ) : null}
+                      </FormControl>
+                      <FormControl>
+                        <FormLabel>Name your character</FormLabel>
+                        <Input
+                          type="text"
+                          name="character"
+                          placeholder="Enter your character name"
+                          value={values.character}
+                          onChange={handleChange}
+                        />
+                        {errors.character ? (
+                          <FormErrorMessage fontSize={"11px"}> {errors.character} </FormErrorMessage>
+                        ) : null}
+                      </FormControl>
+                      <Button marginY="20px" type="submit" disabled={isSubmitting}>
+                        Create
+                      </Button>
+                    </form>
+                  )}
+                </Formik>
               </ModalBody>
-              <ModalFooter>
-                <Button onClick={onClose}>Close</Button>
-              </ModalFooter>
+              {/* <ModalFooter>
+                <Button onClick={onClose}>Create</Button>
+              </ModalFooter> */}
             </ModalContent>
           </Modal>
           <Box w="100%" pos="relative" top="0px">
-            {/* <Chats/> */}
             <div className="flex justify-between gap-y-4 gap-x-4 bg-transparent p-1 text-white md:flex-row  md:items-center lg:flex-col lg:px-8">
-              <Textarea placeholder='Type something' onChange={(e) => setText(e.target.value)} />
-              
+              <Textarea placeholder="Type something" onChange={(e) => setText(e.target.value)} />
+
               <div className="flex flex-none items-center gap-x-5">
                 <button
                   type="button"
@@ -203,9 +236,10 @@ export default function Layout( ) {
             right="40px"
             justifyContent="center"
             alignItems={"center"}
-            onClick={() => {
-              createChat()
-            }}
+            onClick={
+              onOpen
+              // createChat();
+            }
           >
             <AiOutlinePlus fontSize={"24px"} />
           </Flex>
