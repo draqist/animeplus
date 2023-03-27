@@ -5,12 +5,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { Logomark } from "@/components/Logo";
 import Features from "../components/Feature";
+import Pricing from "../components/Pricing";
 
 const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
+  { name: "Features", href: "#features" },
+  { name: "Pricing", href: "#pricing" },
 ];
 
 export default function Example() {
@@ -31,7 +30,7 @@ export default function Example() {
               /> */}
                 <Logomark width="28" height="28" className="fill-indigo-500" />
               </a>
-              <span className="ml-3 text-lg font-bold uppercase text-white"> Animeplus</span>
+              <span className="ml-3 text-lg font-bold uppercase text-white"> ChatFic</span>
             </div>
             <div className="flex lg:hidden">
               <button
@@ -184,6 +183,7 @@ export default function Example() {
         </div>
       </div>
       <Features />
+      <Pricing />
     </div>
   );
 }
