@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Logo } from "@/components/Logo";
 import { auth } from "@/utils/firebase";
+import { createChat,getChats } from "@/utils/lib";
 import { chatValidation } from "@/utils/validations";
 import {
   Avatar,
@@ -41,8 +42,7 @@ export default function Layout() {
   const [text, setText] = useState("");
   const [user, loading, error] = useAuthState(auth);
   useEffect(() => {
-    // const user = getChats();
-    console.log(user);
+    const chats = getChats();
   }, []);
 
   const NavItem = (props) => {
@@ -167,8 +167,15 @@ export default function Layout() {
               <ModalBody>
                 <Formik
                   initialValues={{ character: "", universe: "" }}
-                  onSubmit={(values, { setSubmitting }) => {}}
+                  onSubmit={(values, {resetForm}) => {
+                    console.log(values)
+                    // createChat(values)
+                    createChat(values)
+                    console.log(createChat(values))
+                    resetForm()
+                  }}
                   validationSchema={chatValidation}
+                  validateOnChange
                 >
                   {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
                     <form onSubmit={handleSubmit}>
@@ -198,7 +205,7 @@ export default function Layout() {
                           <FormErrorMessage fontSize={"11px"}> {errors.character} </FormErrorMessage>
                         ) : null}
                       </FormControl>
-                      <Button marginY="20px" type="submit" disabled={isSubmitting}>
+                      <Button marginY="20px" type="submit" >
                         Create
                       </Button>
                     </form>
@@ -217,7 +224,7 @@ export default function Layout() {
               <div className="flex flex-none items-center gap-x-5">
                 <button
                   type="button"
-                  className="rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
+                  className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
                 >
                   Send
                 </button>

@@ -30,13 +30,15 @@ export const getChats = async () => {
   return response;
 };
 
-export const createChat = async (chatData) => {
+export const createChat = async (chatData,) => {
+  const token = localStorage.getItem("idtoken")
   let payload = {
     token,
   };
   const response = await waitlistAPI.post("/chat/", payload, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("idtoken")}`,
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(chatData),
   });
