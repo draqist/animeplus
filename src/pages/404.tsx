@@ -15,7 +15,7 @@ export default function Page404() {
       <div className="grid min-h-full grid-cols-1 grid-rows-[1fr,auto,1fr] bg-white lg:grid-cols-[max(50%,36rem),1fr]">
         <header className="mx-auto w-full max-w-7xl px-6 pt-6 sm:pt-10 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:px-8">
           <Link href="/">
-            <span className="sr-only">Your Company</span>
+            <span className="sr-only">Chatfic</span>
             <img
               className="h-10 w-auto sm:h-12"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"

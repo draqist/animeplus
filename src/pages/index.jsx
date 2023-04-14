@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
 import { useState } from "react";
 import { Logomark } from "@/components/Logo";
 import Features from "../components/Feature";
@@ -76,13 +75,13 @@ export default function Example() {
                 </a>
               ))}
             </div>
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
               <Link href="#signInWithGoogle" passHref legacyBehavior>
                 <a href="" className="text-sm font-semibold leading-6 text-white">
                   Log in <span aria-hidden="true">&rarr;</span>
                 </a>
               </Link>
-            </div>
+            </div> */}
           </nav>
           <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
             <div className="fixed inset-0 z-50" />
@@ -119,7 +118,7 @@ export default function Example() {
                       </a>
                     ))}
                   </div>
-                  <div className="py-6">
+                  {/* <div className="py-6">
                     <Link href="#signInWithGoogle" passHref legacyBehavior>
                       <a
                         href=""
@@ -128,7 +127,7 @@ export default function Example() {
                         Log in
                       </a>
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </Dialog.Panel>
@@ -169,7 +168,7 @@ export default function Example() {
                 Escape into a world of pure imagination with ChatFic. Talk to your favorite fictional characters,
                 explore their worlds, and experience stories like never before.
               </p>
-              <div className="mt-10 flex items-center gap-x-6" id="signInWithGoogle">
+              {/* <div className="mt-10 flex items-center gap-x-6" id="signInWithGoogle">
                 <div className="inline-flex w-full justify-center rounded-md py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                   <button
                     type="button"
@@ -197,7 +196,7 @@ export default function Example() {
                 <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                   Learn more <span aria-hidden="true">→</span>
                 </a>
-              </div>
+              </div> */}
             </div>
             <div className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow">
               <svg viewBox="0 0 366 729" role="img" className="mx-auto w-[22.875rem] max-w-full drop-shadow-xl">
