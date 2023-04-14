@@ -5,7 +5,6 @@ import { useState } from "react";
 import { Logomark } from "@/components/Logo";
 import Features from "../components/Feature";
 import Pricing from "../components/Pricing";
-import { signInWithGoogle } from "../utils/auth.ts";
 
 const navigation = [
   { name: "Features", href: "#features" },
@@ -14,32 +13,6 @@ const navigation = [
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const signInWithGoogleHandler = async (e) => {
-    e.preventDefault();
-    try {
-      let res = await signInWithGoogle();
-      let idtoken = await res.user.getIdToken();
-      console.log(idtoken);
-      // send to backend to create user if they don't exist
-      localStorage.setItem("idtoken", idtoken);
-    } catch (error) {
-      console.log(error);
-      if (error.code == "auth/email-already-in-use") {
-        alert("Email already in use. Please login.");
-      } else if (error.code == "auth/invalid-email") {
-        alert("Invalid email address.");
-      } else if (error.code == "auth/weak-password") {
-        alert("Password is too weak.");
-      } else if (error.code == "auth/operation-not-allowed") {
-        alert("Email sign-in is disabled.");
-      } else if (error.code == "auth/invalid-credential") {
-        alert("Invalid credential.");
-      } else {
-        alert("Error");
-      }
-    }
-  };
 
   return (
     <div className="relative overflow-hidden bg-gray-900">
