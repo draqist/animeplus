@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const waitlistAPI = axios.create({
-  baseURL: "http://chatfic-lb-1532766351.eu-west-1.elb.amazonaws.com",
+  baseURL: "https://api.fic.chat",
 });
 
 export const signInOrCreateUser = async (token) => {
@@ -30,18 +30,18 @@ export const getChats = async () => {
   return response;
 };
 
-export const createChat = async (chatData,) => {
-  const token = localStorage.getItem("idtoken")
+export const createChat = async (universe, character) => {
   let payload = {
-    token,
+    universe,
+    character,
   };
   const response = await waitlistAPI.post("/chat/", payload, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("idtoken")}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(chatData),
   });
+  console.log(response);
   return response;
 };
 

@@ -169,8 +169,7 @@ export default function Layout() {
                   initialValues={{ character: "", universe: "" }}
                   onSubmit={(values, {resetForm}) => {
                     console.log(values)
-                    // createChat(values)
-                    createChat(values)
+                    createChat(values.universe, values.character)
                     console.log(createChat(values))
                     resetForm()
                   }}
